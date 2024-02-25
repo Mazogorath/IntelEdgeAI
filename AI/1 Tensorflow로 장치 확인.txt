@@ -1,0 +1,24 @@
+입력
+from tensorflow.python.client import device_lib
+print(device_lib.list_local_devices())
+
+출력
+[name: "/device:CPU:0"
+device_type: "CPU"
+memory_limit: 268435456
+locality {
+}
+incarnation: 17750112460322261553
+xla_global_id: -1
+, name: "/device:GPU:0"
+device_type: "GPU"
+memory_limit: 1468383232
+locality {
+  bus_id: 1
+  links {
+  }
+}
+incarnation: 3032215310832595958
+physical_device_desc: "device: 0, name: NVIDIA GeForce GT 730, pci bus id: 0000:01:00.0, compute capability: 3.5"
+xla_global_id: 416903419
+]

@@ -1,0 +1,20 @@
+<html>
+<head> 
+  <title>SERVO CONTROLLER</title>	
+  <meta name="viewport" content="width=device-width initial-scale=1">
+</head> 
+<body>
+   <h1>Web에서 라즈베리파이의 서보모터 제어하기</h1>
+   <hr>
+   <div style="padding-left:20px;">
+     <h3>서보모터 제어</h3>
+     <form method="GET" action="/servo_control">
+        <input type="range" min="0" max="180" name="deg" value={{deg}} onchange="this.form.submit()"/> 		
+     </form>
+     <a href="{{ url_for('servo_control', deg=deg+10) }}"><input type="button" value="+10" ></a>
+     <a href="{{ url_for('servo_control', deg=deg-10) }}"><input type="button" value="-10" ></a>
+     각도 : {{deg}}
+         <hr>
+    </div>
+ </body>
+ </html>

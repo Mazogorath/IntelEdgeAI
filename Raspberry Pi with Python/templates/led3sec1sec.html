@@ -1,0 +1,43 @@
+<html>
+<head> 
+  <title>LED CONTROLLER</title>	
+  <meta name="viewport" content="width=device-width initial-scale=1">
+</head> 
+<body>
+   <h1>Web에서 라즈베리파이의 LED 제어하기3: 3초간 켜고 끄기 + 1초간격 깜빡임</h1>
+   <hr>
+   <div style="padding-left:20px;">
+	<h3>적,녹,청 LED 각각 제어</h3>
+	<p style="color: red;">
+        <b>빨간색 LED: </b>	
+    <a href="{{ url_for('LED_control', color='red', state=1) }}"><input type="button" value="ON" ></a>
+    <a href="{{ url_for('LED_blink', color='red') }}"><input type="button" value="blink" ></a>
+    <a href="{{ url_for('LED_on_3_sec', color='red') }}"><input type="button" value="3 sec" ></a>
+    <a href="{{ url_for('LED_control', color='red', state=0) }}"> <input type="button" value="OFF"> </a>
+ </p>
+ <p style="color: green;">
+    <b>초록색 LED: </b>							
+    <a href="{{ url_for('LED_control', color='green', state=1) }}"><input type="button" value="ON" ></a>
+    <a href="{{ url_for('LED_blink', color='green') }}"><input type="button" value="blink" ></a>
+    <a href="{{ url_for('LED_on_3_sec', color='green') }}"><input type="button" value="3 sec" ></a>
+    <a href="{{ url_for('LED_control', color='green', state=0) }}"> <input type="button" value="OFF"> </a>
+ </p>
+ <p style="color: blue;">
+    <b>파란색 LED: </b>					
+    <a href="{{ url_for('LED_control', color='blue', state=1) }}"><input type="button" value="ON" ></a>
+    <a href="{{ url_for('LED_blink', color='blue') }}"><input type="button" value="blink" ></a>
+    <a href="{{ url_for('LED_on_3_sec', color='blue') }}"><input type="button" value="3 sec" ></a>
+    <a href="{{ url_for('LED_control', color='blue', state=0) }}"> <input type="button" value="OFF"> </a>
+ </p>
+ <hr>
+	<h3>전체 LED 한번에 제어</h3>
+	<p style="padding-left:50px;"> 
+           <a href="{{ url_for('whole_control', state=1) }}"> <input type="button" value="ON" ></a>
+	   <a href="{{ url_for('whole_control', state=2) }}"> <input type="button" value="blink" ></a>
+	   <a href="{{ url_for('whole_control', state=3) }}"> <input type="button" value="3 sec" ></a>
+	   <a href="{{ url_for('whole_control', state=0) }}"> <input type="button" value="OFF"> </a>
+	</p>
+        <hr>
+	</div>
+</body>
+</html>

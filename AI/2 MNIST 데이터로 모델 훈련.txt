@@ -1,0 +1,98 @@
+입력
+import tensorflow as tf
+
+class myCallback(tf.keras.callbacks.Callback):
+        def on_epoch_end(self, epoch, logs={}):
+            if(logs.get('accuracy')>0.95):
+                print("\n정확도 95%에 도달하여 훈련을 멈춥니다")
+                self.model.stop_training = True
+
+callbacks = myCallback()
+mnist = tf.keras.datasets.fashion_mnist
+
+(training_images, training_labels), (test_images, test_labels) = mnist.load_data()
+
+training_images=training_images/255.0
+test_images=test_images/255.0
+
+model = tf.keras.models.Sequential([
+    tf.keras.layers.Flatten(input_shape=(28, 28)),
+    tf.keras.layers.Dense(128, activation=tf.nn.relu),
+    tf.keras.layers.Dense(10, activation=tf.nn.softmax)
+])
+
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+model.fit(training_images, training_labels, epochs=50,
+          callbacks=[callbacks])
+
+출력
+Epoch 1/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.5032 - accuracy: 0.8235
+Epoch 2/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.3784 - accuracy: 0.8641
+Epoch 3/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.3358 - accuracy: 0.8772
+Epoch 4/50
+1875/1875 [==============================] - 5s 3ms/step - loss: 0.3134 - accuracy: 0.8851
+Epoch 5/50
+1875/1875 [==============================] - 5s 3ms/step - loss: 0.2963 - accuracy: 0.8908
+Epoch 6/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.2798 - accuracy: 0.8962
+Epoch 7/50
+1875/1875 [==============================] - 5s 3ms/step - loss: 0.2668 - accuracy: 0.9007
+Epoch 8/50
+1875/1875 [==============================] - 5s 3ms/step - loss: 0.2545 - accuracy: 0.9054
+Epoch 9/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.2455 - accuracy: 0.9094
+Epoch 10/50
+1875/1875 [==============================] - 5s 3ms/step - loss: 0.2387 - accuracy: 0.9098
+Epoch 11/50
+1875/1875 [==============================] - 5s 3ms/step - loss: 0.2284 - accuracy: 0.9141
+Epoch 12/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.2237 - accuracy: 0.9168
+Epoch 13/50
+1875/1875 [==============================] - 5s 3ms/step - loss: 0.2149 - accuracy: 0.9194
+Epoch 14/50
+1875/1875 [==============================] - 5s 3ms/step - loss: 0.2100 - accuracy: 0.9204
+Epoch 15/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.2029 - accuracy: 0.9237
+Epoch 16/50
+1875/1875 [==============================] - 7s 4ms/step - loss: 0.1983 - accuracy: 0.9256
+Epoch 17/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.1924 - accuracy: 0.9286
+Epoch 18/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.1880 - accuracy: 0.9278
+Epoch 19/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.1817 - accuracy: 0.9312
+Epoch 20/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.1755 - accuracy: 0.9342
+Epoch 21/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.1728 - accuracy: 0.9344
+Epoch 22/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.1691 - accuracy: 0.9366
+Epoch 23/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.1647 - accuracy: 0.9383
+Epoch 24/50
+1875/1875 [==============================] - 5s 3ms/step - loss: 0.1617 - accuracy: 0.9395
+Epoch 25/50
+1875/1875 [==============================] - 5s 3ms/step - loss: 0.1593 - accuracy: 0.9397
+Epoch 26/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.1530 - accuracy: 0.9419
+Epoch 27/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.1501 - accuracy: 0.9434
+Epoch 28/50
+1875/1875 [==============================] - 5s 3ms/step - loss: 0.1470 - accuracy: 0.9451
+Epoch 29/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.1424 - accuracy: 0.9462
+Epoch 30/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.1396 - accuracy: 0.9493
+Epoch 31/50
+1875/1875 [==============================] - 6s 3ms/step - loss: 0.1369 - accuracy: 0.9492
+Epoch 32/50
+1862/1875 [============================>.] - ETA: 0s - loss: 0.1341 - accuracy: 0.9500
+정확도 95%에 도달하여 훈련을 멈춥니다
+1875/1875 [==============================] - 5s 3ms/step - loss: 0.1340 - accuracy: 0.9500
+<keras.callbacks.History at 0x23c015befd0>

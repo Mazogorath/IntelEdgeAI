@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>RPi의 SW 상태를 웹으로 전달</h1>
+    <hr>
+    <div style = "padding-left:20px">
+        <h3>각각의 스위치 상태</h3>
+        <p style = "color:red">
+            <b>왼쪽 스위치:{% if sw_state_list[0]!=0 %}
+                {%elif sw_state_list[0] == 0%} 꺼짐 {%endif%}
+            </b>
+        </p>
+        <p style = "color:green">
+            <b>중간 스위치:{% if sw_state_list[1]!=0 %}
+                {%elif sw_state_list[1] == 0%} 꺼짐 {%endif%}
+            </b>
+        </p>
+        <p style = "color:blue">
+            <b>오른쪽 스위치:{% if sw_state_list[2]!=0 %}
+                {%elif sw_state_list[2] == 0%} 꺼짐 {%endif%}
+            </b>
+        </p>
+    </div> 
+</body>
+</html>
