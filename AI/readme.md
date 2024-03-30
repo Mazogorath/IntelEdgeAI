@@ -1,1 +1,0 @@
-# Tensorflow, OpenVino, Jupyter Notebook
